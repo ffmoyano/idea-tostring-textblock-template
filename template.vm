@@ -11,11 +11,14 @@ $classname{
 #end
 
 }""").formatted( ##
-## format attributes
+## formatted parameters
 #set ($i = 0)
 #foreach ($member in $members)
 #if ($i != 0), ##
 #end
+    #if($i != 0 && $i % 3 == 0)  ## new line each 3 parameters so that line width doesn't gets too large
+
+    #end
 #if ($member.primitiveArray || $member.objectArray)
 java.util.Arrays.toString(this.$member.name)##
 #else
